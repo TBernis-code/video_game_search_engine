@@ -24,6 +24,8 @@
 
         <!-- Dependencies -->
         <spring-boot.version>2.6.2</spring-boot.version>
+         <elasticsearch.version>7.16.3</elasticsearch.version>
+        <spring-es.version>4.3.1</spring-es.version>
 
         <!-- Test dependencies -->
         <junit.version>5.8.2</junit.version>
@@ -64,6 +66,17 @@
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring-boot.version}</version>
                 <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>co.elastic.clients</groupId>
+                <artifactId>elasticsearch-java</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-elasticsearch</artifactId>
+                <version>${spring-es.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -110,7 +123,10 @@
         </pluginManagement>
         <plugins>
             <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+
                 <executions>
                     <execution>
                         <goals>
