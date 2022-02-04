@@ -1,7 +1,6 @@
 package fr.lernejo.fileinjector;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.amqp.AmqpConnectException;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,14 +15,14 @@ class LauncherTest {
         File resourcesDirectory = new File("src/test/resources");
         String file = resourcesDirectory.getAbsolutePath()+"/games.json";
         assertTimeoutPreemptively(
-            Duration.ofSeconds(15L),
+            Duration.ofSeconds(10L),
             () -> Launcher.main(new String[]{file}));
     }
 
     @Test
     void no_file() {
         assertTimeoutPreemptively(
-            Duration.ofSeconds(15L),
+            Duration.ofSeconds(10L),
             () -> Launcher.main(new String[]{}));
     }
 
