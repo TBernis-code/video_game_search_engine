@@ -11,7 +11,6 @@ package fr.lernejo.search.api;
     import org.elasticsearch.search.builder.SearchSourceBuilder;
     import org.springframework.http.HttpStatus;
     import org.springframework.web.bind.annotation.*;
-
     import java.io.IOException;
     import java.util.ArrayList;
     import java.util.List;
@@ -20,7 +19,6 @@ package fr.lernejo.search.api;
 @RestController
 public class SearchController {
     private final RestHighLevelClient client;
-
     public SearchController(RestHighLevelClient client) {
         this.client = client;
     }
@@ -43,11 +41,9 @@ public class SearchController {
         }
         return result;
     }
-
     @ExceptionHandler({ ElasticsearchException.class, RuntimeException.class, IOException.class })
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     List<Map<String, Object>> handleException() {
         return new ArrayList<>();
     }
-
 }
